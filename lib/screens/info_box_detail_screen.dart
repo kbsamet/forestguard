@@ -17,7 +17,7 @@ class InfoBoxDetailScreen extends StatefulWidget {
 
 class _InfoBoxDetailScreenState extends State<InfoBoxDetailScreen> {
   List<HistoricalReadingData> historicalReadingData = [];
-  int selectedIndex = 0;
+  String selectedIndex = "1h";
 
   @override
   void initState() {
@@ -50,7 +50,7 @@ class _InfoBoxDetailScreenState extends State<InfoBoxDetailScreen> {
     });
   }
 
-  void updateData(int index) {
+  void updateData(String index) {
     if (index == selectedIndex) return;
     setState(() {
       selectedIndex = index;
@@ -97,13 +97,13 @@ class _InfoBoxDetailScreenState extends State<InfoBoxDetailScreen> {
                                     .toList(),
                             items: const [
                               DropdownMenuItem(
-                                  value: 0, child: Text("Son 1 saat")),
+                                  value: "1h", child: Text("Son 1 saat")),
                               DropdownMenuItem(
-                                  value: 1, child: Text("Son 24 saat")),
+                                  value: "1d", child: Text("Son 24 saat")),
                               DropdownMenuItem(
-                                  value: 2, child: Text("Son 1 hafta")),
+                                  value: "1w", child: Text("Son 1 hafta")),
                               DropdownMenuItem(
-                                  value: 3, child: Text("Son 1 ay")),
+                                  value: "1m", child: Text("Son 1 ay")),
                             ],
                             onChanged: (e) => updateData(e!)),
                         SfCartesianChart(
