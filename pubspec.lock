@@ -152,6 +152,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.18.1"
+  jiffy:
+    dependency: "direct main"
+    description:
+      name: jiffy
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.1"
   js:
     dependency: transitive
     description:
@@ -252,7 +259,7 @@ packages:
       sha256: bac14684b62e990bd44436f5ce2ff5506be4df9add6f17f1cefd217819bdd0a7
       url: "https://pub.dev"
     source: hosted
-    version: "21.2.3"
+    version: "21.2.8"
   syncfusion_flutter_core:
     dependency: transitive
     description:
@@ -260,7 +267,7 @@ packages:
       sha256: c1c65f1fc377ff101ab5f840b9013c5267658e1185abb32df1a23c0aa0508974
       url: "https://pub.dev"
     source: hosted
-    version: "21.2.3"
+    version: "21.2.8"
   term_glyph:
     dependency: transitive
     description:

@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.white),
                 foregroundColor: MaterialStateProperty.all(
-                  const Color(0xffAC2737),
+                  darkRed,
                 ),
               ),
               child: const Text(
@@ -111,17 +111,20 @@ class _HomeScreenState extends State<HomeScreen> {
             readingType: "Sıcaklık",
             readingValue: reading.temperature,
             readingUnit: "°C",
-            type: ReadingType.temperature),
+            type: ReadingType.temperature,
+            dangerPoint: 50),
         ReadingDisplayData(
             readingType: "Nem",
             readingValue: reading.humidity,
             readingUnit: "%",
-            type: ReadingType.humidity),
+            type: ReadingType.humidity,
+            dangerPoint: 70),
         ReadingDisplayData(
             readingType: "Duman",
             readingValue: reading.smoke,
             readingUnit: "ppm",
-            type: ReadingType.smoke),
+            type: ReadingType.smoke,
+            dangerPoint: 600),
       ];
     });
   }

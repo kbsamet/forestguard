@@ -18,7 +18,9 @@ class InfoBox extends StatelessWidget {
           padding: const EdgeInsets.all(15),
           margin: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: lightGreen,
+            color: readingData.readingValue > readingData.dangerPoint
+                ? darkRed
+                : lightGreen,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Column(
