@@ -8,3 +8,5 @@ const Color darkRed = Color(0xffAC2737);
 const String apiUrl = "fire-sensor-production.up.railway.app";
 
 enum ReadingType { smoke, temperature, humidity, isFireExist }
+
+

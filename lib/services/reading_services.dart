@@ -22,6 +22,7 @@ Future<List<HistoricalReadingData>> getHistoricalReadingData(
   Response resp =
       await sendGetRequest("sensor/findLatestSensorData/$timeInterval", null);
   List<HistoricalReadingData> historicalReadingData = [];
+  
   for (Map<String, dynamic> data in (jsonDecode(resp.body) as List).reversed) {
     String date = "";
     switch (timeInterval) {

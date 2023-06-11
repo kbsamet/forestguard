@@ -1,7 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:forestguard/screens/home_screen.dart';
+import 'package:forestguard/screens/login_screen.dart';
+import 'package:forestguard/util/api.dart';
+import 'package:http/http.dart';
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
@@ -9,10 +13,36 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isLoggedIn = false;
   // This widget is the root of your application.
+
+  @override
+  void initState() {
+    super.initState();
+    checkAuth();
+  }
+
+  checkAuth() async {
+    const FlutterSecureStorage storage = FlutterSecureStorage();
+    String? auth = await storage.read(key: "auth");
+    if (auth != null) {
+      Response resp = await sendGetRequest("sensor/findLatestSensorData", null);
+      if (resp.statusCode == 200) {
+        setState(() {
+          isLoggedIn = true;
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,7 +54,7 @@ class MyApp extends StatelessWidget {
                 displayColor: Colors.white,
               ),
         ),
-        home: const HomeScreen());
+        home: isLoggedIn ? const HomeScreen() : const LoginScreen());
   }
 }
 

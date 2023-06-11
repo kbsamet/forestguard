@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:forestguard/util/consts.dart';
 import "package:http/http.dart" as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -6,7 +8,7 @@ import 'package:http/http.dart';
 Future<Response> sendGetRequest(
     String endpoint, Map<String, dynamic>? params) async {
   const storage = FlutterSecureStorage();
-  //String? value = await storage.read(key: "auth");
+  String? value = await storage.read(key: "auth");
 
   var resp = await http.get(
       Uri.https(
@@ -14,7 +16,7 @@ Future<Response> sendGetRequest(
         endpoint,
       ),
       headers: {
-        // "Authorization": value!,
+        "Authorization": value!,
         "Content-Type": "application/json",
         "Accept": "application/json"
       });
@@ -41,18 +43,21 @@ Future<Map<String, dynamic>> sendPostRequest(
   return resp.body as Map<String, dynamic>;
 }
 
-Future sendAuthorizationRequest(String username, String password) async {
+Future<Response> sendAuthorizationRequest(
+    String username, String password) async {
   var resp = await http.post(
-      Uri.http(
+      Uri.https(
         apiUrl,
-        "/login",
+        "user/login",
       ),
-      body: {
+      body: jsonEncode({
         "username": username,
         "password": password,
-      },
+      }),
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       });
+
+  return resp;
 }
