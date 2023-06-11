@@ -35,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+      width: double.infinity,
       color: darkGreen,
       child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -59,16 +60,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 icon: Icons.lock,
                 isSecret: true),
             const SizedBox(height: 20),
-            InkWell(
-              onTap: login,
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                decoration: BoxDecoration(
-                  color: lightGreen,
-                  borderRadius: BorderRadius.circular(10),
+            SizedBox(
+              width: 327,
+              child: InkWell(
+                onTap: login,
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
+                  decoration: BoxDecoration(
+                    color: lightGreen,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  height: 56,
+                  child: const Center(child: Text("Giriş Yap")),
                 ),
-                height: 56,
-                child: const Center(child: Text("Giriş Yap")),
               ),
             )
           ]),
